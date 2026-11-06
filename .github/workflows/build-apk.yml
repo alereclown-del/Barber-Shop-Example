@@ -41,7 +41,7 @@ jobs:
 
       - name: Install Dependencies
         working-directory: ${{ steps.proj-dir.outputs.dir }}
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Build Web Application (Vite)
         working-directory: ${{ steps.proj-dir.outputs.dir }}
@@ -50,10 +50,11 @@ jobs:
       - name: Initialize and Sync Capacitor Android
         working-directory: ${{ steps.proj-dir.outputs.dir }}
         run: |
+          npx --yes @capacitor/cli telemetry off || true
           if [ ! -d "android" ]; then
-            npx cap add android
+            npx --yes @capacitor/cli add android
           fi
-          npx cap sync android
+          npx --yes @capacitor/cli sync android
 
       - name: Build Debug APK with Gradle
         working-directory: ${{ steps.proj-dir.outputs.dir }}/android
@@ -65,7 +66,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: BarberShop-app-debug-apk
-          path: ${{ steps.proj-dir.outputs.dir }}/android/app/build/outputs/apk/debug/app-debug.apk
+          path: |
+            ${{ steps.proj-dir.outputs.dir }}/android/app/build/outputs/apk/debug/app-debug.apk
+            **/android/app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
           retention-days: 30
-
