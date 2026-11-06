@@ -1,0 +1,68 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    
+    /* Superficies de Alta Resistencia y Antirreflejo (Industrial Grooming) */
+    --background: #0C0D0E;
+    --surface-1: #141618;
+    --surface-2: #1C1E22;
+    --surface-hover: #24272D;
+    
+    --card: #141618;
+    --input: #181A1D;
+    --border: #23262B;
+    --border-strong: #343842;
+    
+    --foreground: #F4F4F5;
+    --muted-foreground: #8E95A2;
+    --text-dim: #525866;
+    
+    /* Acento de Marca: Latón Mecanizado / Champagne Mate */
+    --primary: #D4AF37;
+    --primary-hover: #E2BF4C;
+    --accent: #9A7B20;
+    
+    /* Semántica Financiera */
+    --solvente-bg: #062316;
+    --solvente-fg: #22C55E;
+    --deuda-bg: #2A0E11;
+    --deuda-fg: #F87171;
+    --favor-bg: #0C2033;
+    --favor-fg: #38BDF8;
+    --alerta-bg: #241C07;
+    --alerta-fg: #FBBF24;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #0C0D0E;
+    color: #F4F4F5;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Custom subtle scrollbars matching #0C0D0E / #23262B Industrial aesthetic */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #0C0D0E;
+}
+::-webkit-scrollbar-thumb {
+  background: #23262B;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #343842;
+}

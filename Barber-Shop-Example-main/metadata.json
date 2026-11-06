@@ -1,0 +1,6 @@
+{
+  "name": "BARBERÍA VZLA — Sistema de Caja, Agenda y Solvencia",
+  "description": "Plataforma integral de alta precisión para barberías en Venezuela: agenda por turnos, libro de cuentas con solvencia, pagos mixtos multimoneda (USD/Bs) y verificador de capturas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
