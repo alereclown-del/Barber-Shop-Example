@@ -41,22 +41,16 @@ jobs:
 
       - name: Install Dependencies
         working-directory: ${{ steps.proj-dir.outputs.dir }}
-        run: |
-          npm install --legacy-peer-deps
-          npm install --legacy-peer-deps @capacitor/core@^6.2.0 @capacitor/android@^6.2.0 @capacitor/cli@^6.2.0
+        run: npm install --legacy-peer-deps
 
       - name: Build Web Application (Vite)
         working-directory: ${{ steps.proj-dir.outputs.dir }}
         run: npm run build
 
-      - name: Initialize and Sync Capacitor Android
+      - name: Sync Capacitor Android
         working-directory: ${{ steps.proj-dir.outputs.dir }}
         run: |
-          npx @capacitor/cli telemetry off || true
-          if [ ! -d "android" ]; then
-            npx @capacitor/cli add android
-          fi
-          npx @capacitor/cli sync android
+          npx --yes @capacitor/cli sync android
 
       - name: Build Debug APK with Gradle
         working-directory: ${{ steps.proj-dir.outputs.dir }}/android
